@@ -1,5 +1,7 @@
-import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
+import 'package:dots_indicator/dots_indicator.dart';
+
+import '../../pages/foods/popular_food_details.dart';
 import '../../utils/dimensions.dart';
 
 import '../../utils/colors.dart';
@@ -65,60 +67,68 @@ class _FoodPageBodyState extends State<FoodPageBody> {
 
     return Transform(
       transform: matrix,
-      child: Stack(
-        children: <Widget>[
-          Container(
-            height: Dimensions.pageViewContainer,
-            margin: EdgeInsets.only(
-                left: Dimensions.width10, right: Dimensions.width10),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(Dimensions.radius30),
-              color: index.isEven
-                  ? const Color(0xFFffd379)
-                  : const Color(0xFF69c5df),
-              image: const DecorationImage(
-                image: AssetImage("assets/images/bestfood/ic_best_food_9.jpeg"),
-                fit: BoxFit.cover,
-              ),
-            ),
-          ),
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: Container(
-              height: Dimensions.pageViewTextContainer,
+      child: GestureDetector(
+        onTap: () {
+          Navigator.of(context).pushNamed(
+            PopularFoodDetail.routeName,
+          );
+        },
+        child: Stack(
+          children: <Widget>[
+            Container(
+              height: Dimensions.pageViewContainer,
               margin: EdgeInsets.only(
-                left: Dimensions.width30,
-                right: Dimensions.width30,
-                bottom: Dimensions.height30,
-              ),
+                  left: Dimensions.width10, right: Dimensions.width10),
               decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(Dimensions.radius20),
-                  color: Colors.white,
-                  boxShadow: const [
-                    BoxShadow(
-                      color: Color(0xFFe8e8e8),
-                      blurRadius: 5.0,
-                      offset: Offset(0, 5),
-                    ),
-                    BoxShadow(
-                      color: Colors.white,
-                      offset: Offset(5, 0),
-                    ),
-                    BoxShadow(
-                      color: Colors.white,
-                      offset: Offset(-5, 0),
-                    ),
-                  ]),
-              child: Container(
-                padding: EdgeInsets.only(
-                    top: Dimensions.height15,
-                    left: Dimensions.height15,
-                    right: Dimensions.height15),
-                child: const AppColumn(text: "Fruit Salad"),
+                borderRadius: BorderRadius.circular(Dimensions.radius30),
+                color: index.isEven
+                    ? const Color(0xFFffd379)
+                    : const Color(0xFF69c5df),
+                image: const DecorationImage(
+                  image:
+                      AssetImage("assets/images/bestfood/ic_best_food_9.jpeg"),
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
-          )
-        ],
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: Container(
+                height: Dimensions.pageViewTextContainer,
+                margin: EdgeInsets.only(
+                  left: Dimensions.width30,
+                  right: Dimensions.width30,
+                  bottom: Dimensions.height30,
+                ),
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(Dimensions.radius20),
+                    color: Colors.white,
+                    boxShadow: const [
+                      BoxShadow(
+                        color: Color(0xFFe8e8e8),
+                        blurRadius: 5.0,
+                        offset: Offset(0, 5),
+                      ),
+                      BoxShadow(
+                        color: Colors.white,
+                        offset: Offset(5, 0),
+                      ),
+                      BoxShadow(
+                        color: Colors.white,
+                        offset: Offset(-5, 0),
+                      ),
+                    ]),
+                child: Container(
+                  padding: EdgeInsets.only(
+                      top: Dimensions.height15,
+                      left: Dimensions.height15,
+                      right: Dimensions.height15),
+                  child: const AppColumn(text: "Fruit Salad"),
+                ),
+              ),
+            )
+          ],
+        ),
       ),
     );
   }

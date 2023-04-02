@@ -17,8 +17,9 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const PopularFoodDetail(),
+      home: const MainHomePage(),
       debugShowCheckedModeBanner: false,
+      routes: {PopularFoodDetail.routeName: (ctx) => const PopularFoodDetail()},
     );
   }
 }

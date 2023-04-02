@@ -9,6 +9,8 @@ import '../../widgets/app_column.dart';
 import '../../widgets/big_text.dart';
 
 class PopularFoodDetail extends StatelessWidget {
+  static const routeName = "/meals-details";
+
   const PopularFoodDetail({super.key});
 
   @override
@@ -92,9 +94,14 @@ class PopularFoodDetail extends StatelessWidget {
             right: Dimensions.width20,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: const [
-                AppIcon(
-                  icon: Icons.arrow_back_ios,
+              children: [
+                GestureDetector(
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
+                  child: AppIcon(
+                    icon: Icons.arrow_back_ios,
+                  ),
                 ),
                 AppIcon(
                   icon: Icons.shopping_cart_outlined,

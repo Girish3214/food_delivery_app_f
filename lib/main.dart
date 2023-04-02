@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:food_delivery_app/pages/foods/popular_food_details.dart';
 import 'package:get/get.dart';
 
+import './pages/foods/popular_food_details.dart';
+import './pages/foods/recommended_food_details.dart';
 import './pages/home/main_home_page.dart';
 
 void main() {
@@ -19,7 +20,10 @@ class MyApp extends StatelessWidget {
       ),
       home: const MainHomePage(),
       debugShowCheckedModeBanner: false,
-      routes: {PopularFoodDetail.routeName: (ctx) => const PopularFoodDetail()},
+      routes: {
+        PopularFoodDetail.routeName: (ctx) => const PopularFoodDetail(),
+        RecommendedFoodDetail.routeName: (ctx) => const RecommendedFoodDetail(),
+      },
     );
   }
 }

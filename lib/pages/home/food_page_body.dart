@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:dots_indicator/dots_indicator.dart';
 
 import '../../pages/foods/popular_food_details.dart';
+import '../../pages/foods/recommended_food_details.dart';
 import '../../utils/dimensions.dart';
 
 import '../../utils/colors.dart';
@@ -188,77 +189,86 @@ class _FoodPageBodyState extends State<FoodPageBody> {
           shrinkWrap: true,
           itemCount: 10,
           itemBuilder: ((context, index) {
-            return Container(
-              margin: EdgeInsets.only(
-                  left: Dimensions.width20,
-                  right: Dimensions.width20,
-                  bottom: Dimensions.height10),
-              child: Row(
-                children: [
-                  // image Section
-                  Container(
-                    height: Dimensions.listViewImgSize,
-                    width: Dimensions.listViewImgSize,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(Dimensions.radius20),
-                      color: Colors.white38,
-                      image: const DecorationImage(
-                        fit: BoxFit.cover,
-                        image: AssetImage(
-                            "assets/images/bestfood/ic_best_food_2.jpeg"),
+            return GestureDetector(
+              onTap: () {
+                Navigator.of(context)
+                    .pushNamed(RecommendedFoodDetail.routeName);
+              },
+              child: Container(
+                margin: EdgeInsets.only(
+                    left: Dimensions.width20,
+                    right: Dimensions.width20,
+                    bottom: Dimensions.height10),
+                child: Row(
+                  children: [
+                    // image Section
+                    Container(
+                      height: Dimensions.listViewImgSize,
+                      width: Dimensions.listViewImgSize,
+                      decoration: BoxDecoration(
+                        borderRadius:
+                            BorderRadius.circular(Dimensions.radius20),
+                        color: Colors.white38,
+                        image: const DecorationImage(
+                          fit: BoxFit.cover,
+                          image: AssetImage(
+                              "assets/images/bestfood/ic_best_food_2.jpeg"),
+                        ),
                       ),
                     ),
-                  ),
 
-                  // text Section
-                  Expanded(
-                    child: Container(
-                        height: Dimensions.listViewTextContainer,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.only(
-                              topRight: Radius.circular(Dimensions.radius20),
-                              bottomRight: Radius.circular(Dimensions.radius20),
-                            ),
-                            color: Colors.white),
-                        child: Padding(
-                          padding: EdgeInsets.only(
-                              left: Dimensions.width10,
-                              right: Dimensions.width10),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              BigText(
-                                  text: "Nutrition fruit balanced diet meals"),
-                              SizedBox(height: Dimensions.height10),
-                              SmallText(text: "With high protien food"),
-                              SizedBox(height: Dimensions.height10),
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: const [
-                                  IconAndText(
-                                    icon: Icons.circle_sharp,
-                                    text: "Normal",
-                                    iconColor: AppColors.iconColor1,
-                                  ),
-                                  IconAndText(
-                                    icon: Icons.location_on,
-                                    text: "1.2km",
-                                    iconColor: AppColors.mainColor,
-                                  ),
-                                  IconAndText(
-                                    icon: Icons.access_time_rounded,
-                                    text: "32min",
-                                    iconColor: AppColors.iconColor2,
-                                  ),
-                                ],
+                    // text Section
+                    Expanded(
+                      child: Container(
+                          height: Dimensions.listViewTextContainer,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.only(
+                                topRight: Radius.circular(Dimensions.radius20),
+                                bottomRight:
+                                    Radius.circular(Dimensions.radius20),
                               ),
-                            ],
-                          ),
-                        )),
-                  )
-                ],
+                              color: Colors.white),
+                          child: Padding(
+                            padding: EdgeInsets.only(
+                                left: Dimensions.width10,
+                                right: Dimensions.width10),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                BigText(
+                                    text:
+                                        "Nutrition fruit balanced diet meals"),
+                                SizedBox(height: Dimensions.height10),
+                                SmallText(text: "With high protien food"),
+                                SizedBox(height: Dimensions.height10),
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: const [
+                                    IconAndText(
+                                      icon: Icons.circle_sharp,
+                                      text: "Normal",
+                                      iconColor: AppColors.iconColor1,
+                                    ),
+                                    IconAndText(
+                                      icon: Icons.location_on,
+                                      text: "1.2km",
+                                      iconColor: AppColors.mainColor,
+                                    ),
+                                    IconAndText(
+                                      icon: Icons.access_time_rounded,
+                                      text: "32min",
+                                      iconColor: AppColors.iconColor2,
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          )),
+                    )
+                  ],
+                ),
               ),
             );
           }),

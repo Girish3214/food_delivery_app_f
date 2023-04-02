@@ -23,6 +23,8 @@ class Dimensions {
   static double width30 = screenHeight / 26.13;
 
 // font sizes
+  static double font16 = screenHeight / 49;
+  static double font18 = screenHeight / 43.55;
   static double font20 = screenHeight / 39.2;
   static double font26 = screenHeight / 30.15;
 

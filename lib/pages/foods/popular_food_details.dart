@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:food_delivery_app/utils/colors.dart';
+
+import '../../utils/colors.dart';
+import '../../widgets/expandable_text.dart';
 
 import '../../utils/dimensions.dart';
 import '../../widgets/app_icon.dart';
@@ -25,7 +27,7 @@ class PopularFoodDetail extends StatelessWidget {
           borderRadius: BorderRadius.only(
               topLeft: Radius.circular(Dimensions.radius20 * 2),
               topRight: Radius.circular(Dimensions.radius20 * 2)),
-          color: AppColors.mainBlackColor,
+          color: AppColors.buttonBackgroundColor,
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -121,6 +123,14 @@ class PopularFoodDetail extends StatelessWidget {
                   AppColumn(text: "Fruit Salad"),
                   SizedBox(height: Dimensions.height20),
                   BigText(text: "Introduce"),
+                  SizedBox(height: Dimensions.height20),
+                  Expanded(
+                    child: SingleChildScrollView(
+                      child: ExpandableText(
+                          text:
+                              "Bionicos are tasty fruit bowls drizzled with a sweet, creamy mixture of yogurt, condensed milk, and Mexican crema. Originally found on food carts in the streets of Guadalajara, Mexico, these bowls are commonly topped with shredded coconut, raisins, and granola."),
+                    ),
+                  )
                 ],
               ),
             ),

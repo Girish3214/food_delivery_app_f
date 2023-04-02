@@ -99,11 +99,11 @@ class PopularFoodDetail extends StatelessWidget {
                   onTap: () {
                     Navigator.pop(context);
                   },
-                  child: AppIcon(
+                  child: const AppIcon(
                     icon: Icons.arrow_back_ios,
                   ),
                 ),
-                AppIcon(
+                const AppIcon(
                   icon: Icons.shopping_cart_outlined,
                 ),
               ],

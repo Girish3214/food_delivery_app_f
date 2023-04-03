@@ -19,6 +19,7 @@ class RecommendedFoodDetail extends StatelessWidget {
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
+            automaticallyImplyLeading: false,
             pinned: true,
             backgroundColor: AppColors.yellowColor,
             toolbarHeight: 80,

@@ -24,13 +24,17 @@ class RecommendedFoodDetail extends StatelessWidget {
             toolbarHeight: 80,
             title: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: const [
-                AppIcon(icon: Icons.clear),
-                AppIcon(icon: Icons.shopping_cart_outlined),
+              children: [
+                GestureDetector(
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                    child: const AppIcon(icon: Icons.clear)),
+                const AppIcon(icon: Icons.shopping_cart_outlined),
               ],
             ),
             bottom: PreferredSize(
-              preferredSize: Size.fromHeight(20),
+              preferredSize: const Size.fromHeight(20),
               child: Container(
                 width: double.maxFinite,
                 padding: const EdgeInsets.only(top: 5, bottom: 10),
@@ -48,7 +52,7 @@ class RecommendedFoodDetail extends StatelessWidget {
             expandedHeight: 300,
             flexibleSpace: FlexibleSpaceBar(
               background: Image.asset(
-                "assets/images/bestfood/ic_best_food_6.jpeg",
+                "assets/images/bestfood/food_6.jpeg",
                 width: double.maxFinite,
                 fit: BoxFit.cover,
               ),

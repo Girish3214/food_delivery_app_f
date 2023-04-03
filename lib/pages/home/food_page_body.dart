@@ -86,8 +86,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                     ? const Color(0xFFffd379)
                     : const Color(0xFF69c5df),
                 image: const DecorationImage(
-                  image:
-                      AssetImage("assets/images/bestfood/ic_best_food_9.jpeg"),
+                  image: AssetImage("assets/images/bestfood/food_9.jpeg"),
                   fit: BoxFit.cover,
                 ),
               ),
@@ -211,8 +210,8 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                         color: Colors.white38,
                         image: const DecorationImage(
                           fit: BoxFit.cover,
-                          image: AssetImage(
-                              "assets/images/bestfood/ic_best_food_2.jpeg"),
+                          image:
+                              AssetImage("assets/images/bestfood/food_2.jpeg"),
                         ),
                       ),
                     ),

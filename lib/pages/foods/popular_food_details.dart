@@ -84,8 +84,7 @@ class PopularFoodDetail extends StatelessWidget {
               decoration: BoxDecoration(
                   image: DecorationImage(
                       fit: BoxFit.cover,
-                      image: AssetImage(
-                          "assets/images/bestfood/ic_best_food_9.jpeg"))),
+                      image: AssetImage("assets/images/bestfood/food_9.jpeg"))),
             ),
           ),
           Positioned(

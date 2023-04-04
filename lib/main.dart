@@ -5,7 +5,11 @@ import './pages/foods/popular_food_details.dart';
 import './pages/foods/recommended_food_details.dart';
 import './pages/home/main_home_page.dart';
 
-void main() {
+import './helpers/dependencies.dart' as dep;
+
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await dep.init();
   runApp(const MyApp());
 }
 

@@ -1,11 +1,14 @@
 import 'package:get/get.dart';
 
+import '../../utils/app_constants.dart';
+
 class ApiClient extends GetConnect implements GetxService {
   late String token;
   final String appBaseUrl;
   late Map<String, String> _mainHeaders;
   ApiClient({required this.appBaseUrl}) {
     baseUrl = appBaseUrl;
+    token = AppConstants.TOKEN;
     timeout = const Duration(seconds: 30);
     _mainHeaders = {
       'Accept': 'application/json',
@@ -14,7 +17,7 @@ class ApiClient extends GetConnect implements GetxService {
     };
   }
 
-  Future<Response> getPopularProductsList(String uri) async {
+  Future<Response> getData(String uri) async {
     try {
       Response response = await get(uri);
       return response;

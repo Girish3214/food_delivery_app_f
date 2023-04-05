@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food_delivery_app/controllers/popular_product_controller.dart';
 import 'package:get/get.dart';
 
 import './pages/foods/popular_food_details.dart';
@@ -17,6 +18,7 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
   @override
   Widget build(BuildContext context) {
+    Get.find<PopularProductController>().getPopularProductsList();
     return GetMaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(

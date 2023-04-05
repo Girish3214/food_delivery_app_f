@@ -6,7 +6,7 @@ class AppConstants {
   static const String APP_DESCRIPTION = "Foodie";
   static const String APP_AUTHOR = "Sebastian Köhler";
 
-  static const String BASE_URL = "https://mvs.bslmeiyu.com";
+  static const String BASE_URL = "http://mvs.bslmeiyu.com";
   static const String POPULAR_PRODUCTS_URL = "/api/v1/products/popular";
   static const String RECOMMENDED_PRODUCTS_URL = "/api/v1/products/recommended";
 

@@ -8,8 +8,6 @@ import '../../widgets/app_icon.dart';
 import '../../utils/colors.dart';
 
 class RecommendedFoodDetail extends StatelessWidget {
-  static const routeName = "/recommended-food-details";
-
   const RecommendedFoodDetail({super.key});
 
   @override

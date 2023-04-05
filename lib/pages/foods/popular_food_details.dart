@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:food_delivery_app/utils/app_constants.dart';
+import 'package:get/get.dart';
 
+import '../../controllers/popular_product_controller.dart';
 import '../../utils/colors.dart';
 import '../../widgets/expandable_text.dart';
 
@@ -9,12 +12,13 @@ import '../../widgets/app_column.dart';
 import '../../widgets/big_text.dart';
 
 class PopularFoodDetail extends StatelessWidget {
-  static const routeName = "/meals-details";
-
-  const PopularFoodDetail({super.key});
+  final int pageId;
+  const PopularFoodDetail({super.key, required this.pageId});
 
   @override
   Widget build(BuildContext context) {
+    var product =
+        Get.find<PopularProductController>().popularProductsList[pageId];
     return Scaffold(
       backgroundColor: Colors.white,
       bottomNavigationBar: Container(
@@ -84,7 +88,11 @@ class PopularFoodDetail extends StatelessWidget {
               decoration: BoxDecoration(
                   image: DecorationImage(
                       fit: BoxFit.cover,
-                      image: AssetImage("assets/images/bestfood/food_9.jpeg"))),
+                      image: NetworkImage(
+                        AppConstants.BASE_URL +
+                            AppConstants.UPLOAD_URL +
+                            product.img,
+                      ))),
             ),
           ),
           Positioned(
@@ -126,15 +134,13 @@ class PopularFoodDetail extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  AppColumn(text: "Fruit Salad"),
+                  AppColumn(text: product.name),
                   SizedBox(height: Dimensions.height20),
                   BigText(text: "Introduce"),
                   SizedBox(height: Dimensions.height20),
                   Expanded(
                     child: SingleChildScrollView(
-                      child: ExpandableText(
-                          text:
-                              "Bionicos are tasty fruit bowls drizzled with a sweet, creamy mixture of yogurt, condensed milk, and Mexican crema. Originally found on food carts in the streets of Guadalajara, Mexico, these bowls are commonly topped with shredded coconut, raisins, and granola."),
+                      child: ExpandableText(text: product.description),
                     ),
                   )
                 ],

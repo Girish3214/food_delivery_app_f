@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import '../../modals/product_modal.dart';
 import '../../pages/foods/popular_food_details.dart';
 import '../../pages/foods/recommended_food_details.dart';
+import '../../routes/route_helper.dart';
 import '../../utils/app_constants.dart';
 import '../../utils/dimensions.dart';
 
@@ -76,9 +77,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
       transform: matrix,
       child: GestureDetector(
         onTap: () {
-          Navigator.of(context).pushNamed(
-            PopularFoodDetail.routeName,
-          );
+          Get.toNamed(RouteHelper.getPopularFood(index));
         },
         child: Stack(
           children: <Widget>[
@@ -213,8 +212,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                     itemBuilder: ((context, index) {
                       return GestureDetector(
                         onTap: () {
-                          Navigator.of(context)
-                              .pushNamed(RecommendedFoodDetail.routeName);
+                          Get.toNamed(RouteHelper.getRecommendedFood());
                         },
                         child: Container(
                           margin: EdgeInsets.only(

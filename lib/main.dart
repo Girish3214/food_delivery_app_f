@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import './pages/foods/popular_food_details.dart';
-import './pages/foods/recommended_food_details.dart';
 import './pages/home/main_home_page.dart';
 
 import './helpers/dependencies.dart' as dep;
 import './controllers/popular_product_controller.dart';
 import './controllers/recommended_product_controller.dart';
+import './routes/route_helper.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -28,10 +27,8 @@ class MyApp extends StatelessWidget {
       ),
       home: const MainHomePage(),
       debugShowCheckedModeBanner: false,
-      routes: {
-        PopularFoodDetail.routeName: (ctx) => const PopularFoodDetail(),
-        RecommendedFoodDetail.routeName: (ctx) => const RecommendedFoodDetail(),
-      },
+      initialRoute: RouteHelper.initial,
+      getPages: RouteHelper.routes,
     );
   }
 }

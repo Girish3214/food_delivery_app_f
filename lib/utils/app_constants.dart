@@ -11,4 +11,6 @@ class AppConstants {
   static const String RECOMMENDED_PRODUCTS_URL = "/api/v1/products/recommended";
 
   static const String TOKEN = "DBToken";
+
+  static const String UPLOAD_URL = "/uploads/";
 }

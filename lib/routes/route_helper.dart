@@ -12,7 +12,8 @@ class RouteHelper {
   static String getInitial() => initial;
   static String getPopularFood(int pageId) =>
       "$popularFoodDetails?pageId=$pageId";
-  static String getRecommendedFood() => recommendedFoodDetails;
+  static String getRecommendedFood(int pageId) =>
+      "$recommendedFoodDetails?pageId=$pageId";
 
   static List<GetPage> routes = [
     GetPage(name: initial, page: () => const MainHomePage()),
@@ -28,7 +29,10 @@ class RouteHelper {
     ),
     GetPage(
       name: recommendedFoodDetails,
-      page: () => const RecommendedFoodDetail(),
+      page: () {
+        var pageId = Get.parameters["pageId"];
+        return RecommendedFoodDetail(pageId: int.parse(pageId!));
+      },
       transition: Transition.fadeIn,
     ),
   ];

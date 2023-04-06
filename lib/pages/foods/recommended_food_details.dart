@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:food_delivery_app/controllers/recommended_product_controller.dart';
+import 'package:food_delivery_app/utils/app_constants.dart';
+import 'package:get/get.dart';
 
 import '../../utils/dimensions.dart';
 import '../../widgets/big_text.dart';
@@ -8,10 +11,15 @@ import '../../widgets/app_icon.dart';
 import '../../utils/colors.dart';
 
 class RecommendedFoodDetail extends StatelessWidget {
-  const RecommendedFoodDetail({super.key});
+  final int pageId;
+  RecommendedFoodDetail({super.key, required this.pageId});
 
   @override
   Widget build(BuildContext context) {
+    var product = Get.find<RecommendedProductController>()
+        .recommendedProductsList[pageId];
+    print(pageId);
+    print(product.name!);
     return Scaffold(
       backgroundColor: Colors.white,
       body: CustomScrollView(
@@ -45,13 +53,13 @@ class RecommendedFoodDetail extends StatelessWidget {
                 ),
                 child: Center(
                     child:
-                        BigText(text: "Food Salad", size: Dimensions.font26)),
+                        BigText(text: product.name, size: Dimensions.font26)),
               ),
             ),
             expandedHeight: 300,
             flexibleSpace: FlexibleSpaceBar(
-              background: Image.asset(
-                "assets/images/bestfood/food_6.jpeg",
+              background: Image.network(
+                AppConstants.BASE_URL + AppConstants.UPLOAD_URL + product.img,
                 width: double.maxFinite,
                 fit: BoxFit.cover,
               ),
@@ -63,9 +71,7 @@ class RecommendedFoodDetail extends StatelessWidget {
                 Container(
                   margin: EdgeInsets.only(
                       left: Dimensions.width20, right: Dimensions.width20),
-                  child: const ExpandableText(
-                      text: "Bionicos are tasty fruit bowls drizzled with a sweet, creamy mixture of yogurt, condensed milk, and Mexican crema. Originally found on food carts in the streets of Guadalajara, Mexico, these bowls are commonly topped with shredded coconut, raisins, and granola.Bionicos are tasty fruit bowls drizzled with a sweet, creamy mixture of yogurt, condensed milk, and Mexican crema. Originally found on food carts in the streets of Guadalajara, Mexico, these bowls are commonly topped with shredded coconut, raisins, and granola." +
-                          "Bionicos are tasty fruit bowls drizzled with a sweet, creamy mixture of yogurt, condensed milk, and Mexican crema. Originally found on food carts in the streets of Guadalajara, Mexico, these bowls are commonly topped with shredded coconut, raisins, and granola.Bionicos are tasty fruit bowls drizzled with a sweet, creamy mixture of yogurt, condensed milk, and Mexican crema. Originally found on food carts in the streets of Guadalajara, Mexico, these bowls are commonly topped with shredded coconut, raisins, and granola Bionicos are tasty fruit bowls drizzled with a sweet, creamy mixture of yogurt, condensed milk, and Mexican"),
+                  child: ExpandableText(text: product.description),
                 ),
               ],
             ),
@@ -92,7 +98,7 @@ class RecommendedFoodDetail extends StatelessWidget {
                   iconSize: Dimensions.iconSize24,
                 ),
                 BigText(
-                  text: "₹120 " + " X " + " 0 ",
+                  text: "₹${product.price * 40}  X  0 ",
                   color: AppColors.mainBlackColor,
                   size: Dimensions.font26,
                 ),

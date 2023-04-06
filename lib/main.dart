@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Get.find<PopularProductController>().getPopularProductsList();
-    Get.find<RecommendedProductController>().getPopularProductsList();
+    Get.find<RecommendedProductController>().getRecommendedProductsList();
     return GetMaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(

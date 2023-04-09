@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import '../data/repository/popular_product_repo.dart';
 import '../modals/product_modal.dart';
 import '../utils/colors.dart';
+import './cart_controller.dart';
 
 class PopularProductController extends GetxController {
   final PopularProductRepo popularProductRepo;
@@ -11,6 +12,7 @@ class PopularProductController extends GetxController {
 
   List<dynamic> _popularProductsList = [];
   List<dynamic> get popularProductsList => _popularProductsList;
+  late CartController _cart;
 
   bool _isLoaded = false;
   bool get isLoaded => _isLoaded;
@@ -18,10 +20,12 @@ class PopularProductController extends GetxController {
   int _quantity = 0;
   int get quantity => _quantity;
 
+  int _inCartItems = 0;
+  int get inCartItems => _inCartItems + _quantity;
+
   Future<void> getPopularProductsList() async {
     Response response = await popularProductRepo.getPopularProductsList();
     if (response.statusCode == 200) {
-      print("got products");
       _popularProductsList = [];
       _popularProductsList.addAll(Product.fromJson(response.body).products);
       _isLoaded = true;
@@ -41,11 +45,11 @@ class PopularProductController extends GetxController {
   }
 
   int checkQuantity(int quantity) {
-    if (quantity < 0) {
+    if ((_inCartItems + quantity) < 0) {
       Get.snackbar("Item count", "You can't reduce more",
           backgroundColor: AppColors.mainColor, colorText: Colors.white);
       return 0;
-    } else if (quantity > 20) {
+    } else if ((_inCartItems + quantity) > 20) {
       Get.snackbar("Item count", "You can't add more than 20 items",
           backgroundColor: AppColors.mainColor, colorText: Colors.white);
       return 20;
@@ -54,7 +58,28 @@ class PopularProductController extends GetxController {
     }
   }
 
-  void initProduct() {
+  void initProduct(ProductModel product, CartController cart) {
     _quantity = 0;
+    _inCartItems = 0;
+    _cart = cart;
+    var exist = false;
+    exist = _cart.existInCart(product);
+
+    if (exist) {
+      _inCartItems = _cart.getQuantity(product);
+    }
+
+    print("The quantity in cart: $_inCartItems");
+  }
+
+  void addItem(ProductModel product) {
+    // if (_quantity > 0) {
+    _cart.addItem(product, _quantity);
+    _quantity = 0;
+    _inCartItems = _cart.getQuantity(product);
+    _cart.items.forEach((key, value) {
+      print("the key: ${value.id} The quamtity: ${value.quantity}");
+    });
+    // }
   }
 }

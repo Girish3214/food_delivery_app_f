@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../controllers/cart_controller.dart';
 import '../../controllers/popular_product_controller.dart';
 import '../../utils/app_constants.dart';
 import '../../utils/colors.dart';
@@ -19,7 +20,8 @@ class PopularFoodDetail extends StatelessWidget {
   Widget build(BuildContext context) {
     var product =
         Get.find<PopularProductController>().popularProductsList[pageId];
-    Get.find<PopularProductController>().initProduct();
+    Get.find<PopularProductController>()
+        .initProduct(product, Get.find<CartController>());
     return Scaffold(
       backgroundColor: Colors.white,
       bottomNavigationBar:
@@ -61,7 +63,7 @@ class PopularFoodDetail extends StatelessWidget {
                         child: const Icon(Icons.remove,
                             color: AppColors.signColor)),
                     SizedBox(width: Dimensions.width10 / 2),
-                    BigText(text: popularProduct.quantity.toString()),
+                    BigText(text: popularProduct.inCartItems.toString()),
                     SizedBox(width: Dimensions.width10 / 2),
                     GestureDetector(
                         onTap: () {
@@ -82,9 +84,14 @@ class PopularFoodDetail extends StatelessWidget {
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(Dimensions.radius20),
                     color: AppColors.mainColor),
-                child: BigText(
-                  text: "₹${product.price * 40} | Add to cart",
-                  color: Colors.white,
+                child: GestureDetector(
+                  onTap: () {
+                    popularProduct.addItem(product);
+                  },
+                  child: BigText(
+                    text: "₹${product.price * 40} | Add to cart",
+                    color: Colors.white,
+                  ),
                 ),
               )
             ],

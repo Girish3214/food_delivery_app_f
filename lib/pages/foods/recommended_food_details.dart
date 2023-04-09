@@ -12,14 +12,12 @@ import '../../utils/colors.dart';
 
 class RecommendedFoodDetail extends StatelessWidget {
   final int pageId;
-  RecommendedFoodDetail({super.key, required this.pageId});
+  const RecommendedFoodDetail({super.key, required this.pageId});
 
   @override
   Widget build(BuildContext context) {
     var product = Get.find<RecommendedProductController>()
         .recommendedProductsList[pageId];
-    print(pageId);
-    print(product.name!);
     return Scaffold(
       backgroundColor: Colors.white,
       body: CustomScrollView(

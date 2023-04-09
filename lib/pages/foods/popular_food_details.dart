@@ -147,8 +147,8 @@ class PopularFoodDetail extends StatelessWidget {
                           : Container(),
                       Get.find<PopularProductController>().totalItems >= 1
                           ? Positioned(
-                              right: 3,
-                              top: 3,
+                              right: 5,
+                              top: 5,
                               child: BigText(
                                 text: Get.find<PopularProductController>()
                                     .totalItems

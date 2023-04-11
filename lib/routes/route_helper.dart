@@ -8,6 +8,7 @@ class RouteHelper {
   static const String initial = "/";
   static const String popularFoodDetails = "/popular-food-details";
   static const String recommendedFoodDetails = "/recommended-food-details";
+  static const String CartPage = "/cart";
 
   static String getInitial() => initial;
   static String getPopularFood(int pageId) =>

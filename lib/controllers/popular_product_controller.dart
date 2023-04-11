@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../data/repository/popular_product_repo.dart';
+import '../modals/cart_modal.dart';
 import '../modals/product_modal.dart';
 import '../utils/colors.dart';
 import './cart_controller.dart';
@@ -38,10 +39,10 @@ class PopularProductController extends GetxController {
   void setQuantity(bool isIncrement) {
     if (isIncrement) {
       _quantity = checkQuantity(_quantity + 1);
-      print("added" + _quantity.toString());
+      // print("added: " + _quantity.toString());
     } else {
       _quantity = checkQuantity(_quantity - 1);
-      print("decremented" + _quantity.toString());
+      // print("decremented: " + _quantity.toString());
     }
     update();
   }
@@ -50,6 +51,11 @@ class PopularProductController extends GetxController {
     if ((_inCartItems + quantity) < 0) {
       Get.snackbar("Item count", "You can't reduce more",
           backgroundColor: AppColors.mainColor, colorText: Colors.white);
+
+      if (_inCartItems > 0) {
+        _quantity = -_inCartItems;
+        return _quantity;
+      }
       return 0;
     } else if ((_inCartItems + quantity) > 20) {
       Get.snackbar("Item count", "You can't add more than 20 items",
@@ -71,7 +77,7 @@ class PopularProductController extends GetxController {
       _inCartItems = _cart.getQuantity(product);
     }
 
-    print("The quantity in cart: $_inCartItems");
+    // print("The quantity in cart: $_inCartItems");
   }
 
   void addItem(ProductModel product) {
@@ -79,10 +85,12 @@ class PopularProductController extends GetxController {
     _quantity = 0;
     _inCartItems = _cart.getQuantity(product);
     _cart.items.forEach((key, value) {
-      print("the key: ${value.id} The quamtity: ${value.quantity}");
+      // print("the key: ${value.id} The quamtity: ${value.quantity}");
     });
     update();
   }
 
   int get totalItems => _cart.totalItems;
+
+  List<CartModal> get getItem => _cart.getItems;
 }

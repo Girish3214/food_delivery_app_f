@@ -11,6 +11,7 @@ import '../../widgets/expandable_text.dart';
 import '../../widgets/app_icon.dart';
 
 import '../../utils/colors.dart';
+import '../cart/cart_page.dart';
 
 class RecommendedFoodDetail extends StatelessWidget {
   final int pageId;
@@ -45,14 +46,19 @@ class RecommendedFoodDetail extends StatelessWidget {
                       children: [
                         const AppIcon(icon: Icons.shopping_cart_outlined),
                         Get.find<PopularProductController>().totalItems >= 1
-                            ? const Positioned(
+                            ? Positioned(
                                 right: 0,
                                 top: 0,
-                                child: AppIcon(
-                                  icon: Icons.circle,
-                                  size: 20,
-                                  iconColor: Colors.transparent,
-                                  bgColor: AppColors.mainColor,
+                                child: GestureDetector(
+                                  onTap: () {
+                                    Get.to(() => const CartPage());
+                                  },
+                                  child: AppIcon(
+                                    icon: Icons.circle,
+                                    size: 20,
+                                    iconColor: Colors.transparent,
+                                    bgColor: AppColors.mainColor,
+                                  ),
                                 ),
                               )
                             : Container(),

@@ -67,8 +67,9 @@ class CartPage extends StatelessWidget {
             child: Container(
                 margin: EdgeInsets.only(top: Dimensions.height15),
                 child: GetBuilder<CartController>(builder: (cartConroller) {
+                  var _cartList = cartConroller.getItems;
                   return ListView.builder(
-                      itemCount: cartConroller.getItems.length,
+                      itemCount: _cartList.length,
                       itemBuilder: (ctx, index) {
                         return Container(
                           height: Dimensions.height20 * 5,
@@ -84,7 +85,7 @@ class CartPage extends StatelessWidget {
                                   image: DecorationImage(
                                     image: NetworkImage(AppConstants.BASE_URL +
                                         AppConstants.UPLOAD_URL +
-                                        cartConroller.getItems[index].img!),
+                                        _cartList[index].img!),
                                     fit: BoxFit.cover,
                                   ),
                                   borderRadius: BorderRadius.circular(
@@ -102,8 +103,7 @@ class CartPage extends StatelessWidget {
                                       MainAxisAlignment.spaceEvenly,
                                   children: [
                                     BigText(
-                                        text:
-                                            cartConroller.getItems[index].name!,
+                                        text: _cartList[index].name!,
                                         color: Colors.black),
                                     SmallText(text: "Spicy"),
                                     Row(
@@ -112,7 +112,7 @@ class CartPage extends StatelessWidget {
                                       children: [
                                         BigText(
                                             text:
-                                                "₹ ${cartConroller.getItems[index].price!}",
+                                                "₹ ${_cartList[index].price! * 40}",
                                             color: AppColors.mainColor),
                                         Container(
                                           padding: EdgeInsets.only(
@@ -130,7 +130,10 @@ class CartPage extends StatelessWidget {
                                             children: [
                                               GestureDetector(
                                                   onTap: () {
-                                                    // popularProduct.setQuantity(false);
+                                                    cartConroller.addItem(
+                                                        _cartList[index]
+                                                            .product!,
+                                                        -1);
                                                   },
                                                   child: const Icon(
                                                       Icons.remove,
@@ -141,13 +144,16 @@ class CartPage extends StatelessWidget {
                                                       Dimensions.width10 / 2),
                                               BigText(
                                                   text:
-                                                      "0"), // popularProduct.inCartItems.toString()
+                                                      "${_cartList[index].quantity}"), // popularProduct.inCartItems.toString()
                                               SizedBox(
                                                   width:
                                                       Dimensions.width10 / 2),
                                               GestureDetector(
                                                   onTap: () {
-                                                    // popularProduct.setQuantity(true);
+                                                    cartConroller.addItem(
+                                                        _cartList[index]
+                                                            .product!,
+                                                        1);
                                                   },
                                                   child: const Icon(Icons.add,
                                                       color:

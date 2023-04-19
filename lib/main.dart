@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import './pages/home/main_home_page.dart';
-
 import './helpers/dependencies.dart' as dep;
 import './controllers/popular_product_controller.dart';
 import './controllers/recommended_product_controller.dart';
@@ -25,9 +23,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MainHomePage(),
       debugShowCheckedModeBanner: false,
-      initialRoute: RouteHelper.initial,
+      initialRoute: RouteHelper.getInitial(),
       getPages: RouteHelper.routes,
     );
   }

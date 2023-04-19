@@ -2,7 +2,7 @@ import 'package:get/get.dart';
 
 import '../pages/foods/popular_food_details.dart';
 import '../pages/foods/recommended_food_details.dart';
-import '../pages/home/main_home_page.dart';
+import '../pages/home/home_page.dart';
 import '../pages/cart/cart_page.dart';
 
 class RouteHelper {
@@ -19,7 +19,7 @@ class RouteHelper {
   static String getCartPage() => cartPage;
 
   static List<GetPage> routes = [
-    GetPage(name: initial, page: () => const MainHomePage()),
+    GetPage(name: initial, page: () => const HomePage()),
     GetPage(
       name: popularFoodDetails,
       page: () {

@@ -6,11 +6,14 @@ A new Flutter project.
 
 This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
+### App images
+<img src="https://github.com/Girish3214/food_delivery_app_f/blob/master/assets/images/app-images/food-app-1.png?raw=true" width="200" height="350"> <img src="https://github.com/Girish3214/food_delivery_app_f/blob/master/assets/images/app-images/food-app-2.png?raw=true" width="200" height="350"> <img src="https://github.com/Girish3214/food_delivery_app_f/blob/master/assets/images/app-images/food-app-3.png?raw=true" width="200" height="350"> <img src="https://github.com/Girish3214/food_delivery_app_f/blob/master/assets/images/app-images/food-app-4.png?raw=true" width="200" height="350">
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+### Packages
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+#### Frontend
+    
+- cupertino_icons
+- dots_indicator
+- get
+- persistent_bottom_nav_bar
